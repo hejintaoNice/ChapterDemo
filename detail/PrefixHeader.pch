@@ -1,0 +1,49 @@
+//
+//  PrefixHeader.pch
+//  detail
+//
+//  Created by hejintao on 2017/6/1.
+//  Copyright © 2017年 hither. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "Masonry.h"
+
+
+//###########
+#define HJTFont(a) [UIFont fontWithName:@"Helvetica" size:a];
+
+#define TableViewXIBRegisterCell(tableView, cellClass, cellID) [tableView registerNib:[UINib nibWithNibName:NSStringFromClass([cellClass class]) bundle:nil] forCellReuseIdentifier:cellID];
+
+#define CollectionViewXIBRegisterCell(collectionView, cellClass, cellID) [collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([cellClass class]) bundle:nil] forCellWithReuseIdentifier:cellID];
+
+
+#define CollectionViewNOXIBRegisterCell(collectionView, cellClass, cellID) [collectionView registerClass:[cellClass class] forCellWithReuseIdentifier:cellID];
+
+#define TableViewNOXIBRegisterCell(tableView, cellClass, cellID) [tableView registerClass:[cellClass class] forCellReuseIdentifier:cellID];
+
+
+#define DefineCellID(cellIDName, cellStr) static NSString *const cellIDName = cellStr;
+
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+
+#define IS_IPHONE_5ANDLESS (IS_IPHONE && SCREEN_MAX_LENGTH <= 568.0)
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5AND5S (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6AND6S (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6PAND6SP (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
+#define W_S __weak __typeof(self) weakSelf = self;
+#define S_S __strong __typeof(self) strongSelf = weakSelf;
+#define weakself(self)  __weak __typeof(self) weakSelf = self
+
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(1.f)]
+
+#endif /* PrefixHeader_pch */

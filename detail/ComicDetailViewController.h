@@ -1,14 +1,14 @@
 //
 //  ViewController.h
-//  detail
+//  DT
 //
-//  Created by hejintao on 2017/5/26.
+//  Created by hejintao on 2017/6/1.
 //  Copyright © 2017年 hither. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ComicDetailViewController : UIViewController
 
 
 @end

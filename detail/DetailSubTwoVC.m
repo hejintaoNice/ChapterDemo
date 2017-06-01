@@ -1,32 +1,29 @@
 //
-//  ViewController.m
-//  detail
+//  DetailSubTwoVC.m
+//  DT
 //
-//  Created by hejintao on 2017/5/26.
+//  Created by hejintao on 2017/6/1.
 //  Copyright © 2017年 hither. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "DetailSubTwoVC.h"
 #import "DetailCollectionViewCell.h"
 #import "MoreButtonView.h"
-#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
-#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
-
-#define CollectionViewNOXIBRegisterCell(collectionView, cellClass, cellID) [collectionView registerClass:[cellClass class] forCellWithReuseIdentifier:cellID];
-
-@interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface DetailSubTwoVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong) UICollectionView *collectionView;
 @property (assign, nonatomic) BOOL isOpen;
 @property (assign, nonatomic) NSInteger showButtonNumber;
 @property (copy, nonatomic) NSMutableArray *titleArr;
 @property (nonatomic,strong) MoreButtonView *footer;
 @property (strong, nonatomic) UIButton *theButton;
+
 @end
 
-@implementation ViewController
+@implementation DetailSubTwoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:self.collectionView];
     _showButtonNumber = 12;
     _titleArr  = [NSMutableArray array];
@@ -56,7 +53,7 @@
         NSInteger temp  = 12;
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         layout.sectionInset = UIEdgeInsetsMake(temp, temp, temp, temp);
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-200) collectionViewLayout:layout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -100,14 +97,13 @@
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-        MoreButtonView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView_id" forIndexPath:indexPath];
-        [footer addSubview:self.theButton];
+    MoreButtonView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView_id" forIndexPath:indexPath];
+    [footer addSubview:self.theButton];
     return footer;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     return CGSizeMake(SCREEN_WIDTH, 50);
 }
-
 
 @end
